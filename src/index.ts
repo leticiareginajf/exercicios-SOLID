@@ -6,6 +6,7 @@ import INotificador from "./INotificador";
 import Notificador from "./Notificador";
 import SlackNotificador from "./SlackNotificador";
 import Tarefa from "./Tarefa";
+import WhatsAppNotificador from "./WhatsAppNotificador";
 
 
 
@@ -22,5 +23,9 @@ const meuNotificador = new Notificador();
 meuNotificador.notificarConclusao(minhaTarefa);
 
 
- email.notificacaoConclusao(minhaTarefa);
- slack.notificacaoConclusao(minhaTarefa);
+ email.notificarConclusao(minhaTarefa);
+ slack.notificarConclusao(minhaTarefa);
+
+ const whatsApp = new WhatsAppNotificador();
+
+ whatsApp.notificarConclusao(minhaTarefa);

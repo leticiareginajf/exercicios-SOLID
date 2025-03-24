@@ -1,8 +1,8 @@
 import Tarefa from "./Tarefa";
 
-interface INotificador{
+export interface INotificador{
 
-    notificacaoConclusao(tarefa: Tarefa) : void;
+    notificarConclusao(tarefa: Tarefa) : void;
 
 }
 
