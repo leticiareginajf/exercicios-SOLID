@@ -2,6 +2,7 @@
 
 
 import EmailNotificador from "./EmailNotificador";
+import GerenciadordeTarefas from "./GerenciadordeTarefas";
 import INotificador from "./INotificador";
 import Notificador from "./Notificador";
 import SlackNotificador from "./SlackNotificador";
@@ -13,6 +14,7 @@ import WhatsAppNotificador from "./WhatsAppNotificador";
 const minhaTarefa = new Tarefa("Naruto", "PENDENTE");
 const email = new EmailNotificador();
 const slack = new SlackNotificador();
+
 
 minhaTarefa.exibir();
 
@@ -29,3 +31,14 @@ meuNotificador.notificarConclusao(minhaTarefa);
  const whatsApp = new WhatsAppNotificador();
 
  whatsApp.notificarConclusao(minhaTarefa);
+
+
+ const gerenciadorEmail = new GerenciadordeTarefas(new EmailNotificador());
+
+ gerenciadorEmail.concluirTarefa(minhaTarefa);
+ 
+ const gerenciadorSlack = new GerenciadordeTarefas(new SlackNotificador());
+ 
+ gerenciadorSlack.concluirTarefa(minhaTarefa);
+ 
+

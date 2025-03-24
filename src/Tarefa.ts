@@ -10,6 +10,9 @@ class Tarefa{
         this.status = status;
     }
 
+    setStatus(novoStatus: string){
+        this.status = novoStatus;
+    }
 
     exibir(){
         console.log(`Titulo: ${this.titulo} , Status: ${this.status}`);
