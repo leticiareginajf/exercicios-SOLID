@@ -12,6 +12,7 @@ class Tarefa{
 
     setStatus(novoStatus: string){
         this.status = novoStatus;
+        return true;
     }
 
     exibir(){

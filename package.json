@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "dev": "ts-node-dev src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,41 @@
   },
   "homepage": "https://github.com/leticiareginajf/exercicios-SOLID#readme",
   "devDependencies": {
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.13",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.2"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.test\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/src/main.ts"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^@rootdir/(.*)$": "<rootDir>/../$1",
+      "^@domain/(.*)$": "<rootDir>/domain/$1",
+      "^@application/(.*)$": "<rootDir>/application/$1",
+      "^@infra/(.*)$": "<rootDir>/infra/$1",
+      "^@interfaces/(.*)$": "<rootDir>/interfaces/$1",
+      "^@shared/(.*)$": "<rootDir>/shared/$1"
+    }
   }
 }
