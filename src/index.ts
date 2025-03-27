@@ -1,6 +1,3 @@
-// console.log('Primeiro Projeto')
-
-
 import EmailNotificador from "./EmailNotificador";
 import GerenciadordeTarefas from "./GerenciadordeTarefas";
 import INotificador from "./INotificador";
