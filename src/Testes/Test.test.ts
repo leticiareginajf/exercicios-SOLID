@@ -27,7 +27,7 @@ test('Deveria retornar o nome de Tarefa', ()=>{
 
     tarefas.exibir();
 
-    expect(tarefas.exibir).toEqual({status: "Concluida", titulo: "Tarefa"});
+    expect(tarefas).toEqual({status: "Concluida", titulo: "Tarefa"});
 })
 
 
