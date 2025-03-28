@@ -19,49 +19,47 @@ class MockNotificador implements INotificador{
 }
 
 
-test('Tarefas', ()=>{
+test('Deveria retornar o nome de Tarefa', ()=>{
+
     const tarefas = new Tarefa("Tarefa", "Concluida");
 
     const tarefasSpy = jest.spyOn(console, 'log');
 
     tarefas.exibir();
 
-    expect(tarefas.exibir).toBe;
-    
+    expect(tarefas.exibir).toEqual({status: "Concluida", titulo: "Tarefa"});
 })
 
 
-test('Gerenciador de Tarefas', ()=>{
+test('Deveria concluir a Tarefa com sucesso', ()=>{
     const tarefa = new Tarefa("101", "Pendente");
     const mockNotificador = new MockNotificador();
 
     const gerenciador = new GerenciadordeTarefas(mockNotificador);
     gerenciador.concluirTarefa(tarefa);
 
-    tarefa.setStatus("Concluida");
-
-
     expect(tarefa.setStatus("Concluida")).toBe(true);
     expect(mockNotificador.notificado).toBe(true);
-    expect(mockNotificador.ultimaTarefa).toBe(tarefa);
+    expect(mockNotificador.ultimaTarefa).toEqual(tarefa);
 })
 
-test ('Email Notificador - Teste', ()=>{
+test ('Deveria retornar o aviso de Email', ()=>{
+    const tarefa = new Tarefa("Tarefa", "Status");
    
-    const tarefaEmail = new Tarefa('Email','Revisar email');
-
-    const email = new EmailNotificador();
+    const tarefaEmail = new EmailNotificador();
 
     const emailSpy = jest.spyOn(console, 'log');
 
-    email.notificarConclusao(tarefaEmail);
+    tarefaEmail.notificarConclusao(tarefa);
 
-    expect(emailSpy).toBe;
+    expect(emailSpy).toHaveBeenCalledWith("Email enviado para notificar a conclusao da Email -> Tarefa");
+
+    emailSpy.mockRestore();
 
 })
 
 
-test('Relatorio Simples - Teste', ()=>{
+test('Deveria retornar o Relatório Simples', ()=>{
 
     const tarefaRelatorio = new Tarefa("Relatorio", "Concluida");
 
@@ -71,12 +69,14 @@ test('Relatorio Simples - Teste', ()=>{
 
     relatorioSimples.gerar(tarefaRelatorio);
 
-    expect(relatorioSpy).toBe;
+    expect(relatorioSpy).toHaveBeenCalledWith("Relatorio Simples: Relatorio");
+
+    relatorioSpy.mockRestore();
 
 })
 
 
-test ('Notificador - Teste', ()=>{
+test ('Deveria retornar a Notificação', ()=>{
 
     const tarefaNotificador = new Tarefa("Notificação", "Concluída");
 
@@ -86,12 +86,13 @@ test ('Notificador - Teste', ()=>{
 
     notificador.notificarConclusao(tarefaNotificador);
 
-    expect(notificarSpy).toBe;
+    expect(notificarSpy).toHaveBeenCalledWith("Tarefa Notificação está concluida");
 
+    notificarSpy.mockRestore();
 })
 
 
-test('Slack Notificador - Teste', ()=>{
+test('Deveria retornar o Slack', ()=>{
     const tarefaSlack = new Tarefa("Slack", "Concluida");
 
     const Slack = new SlackNotificador();
@@ -100,12 +101,14 @@ test('Slack Notificador - Teste', ()=>{
 
     Slack.notificarConclusao(tarefaSlack);
 
-    expect(slackSpy).toBe;
+    expect(slackSpy).toHaveBeenCalledWith("Slack enviado para notificar a conclusao da tarefa -> Slack");
+
+    slackSpy.mockRestore();
 
 })
 
-test('Whatsapp Notificador - Teste', ()=>{
-    const tarefaWhatsApp = new Tarefa("Slack", "Concluida");
+test('Deveria retornar a notificacao do Whatsapp', ()=>{
+    const tarefaWhatsApp = new Tarefa("Whatsapp", "Concluida");
 
     const whats = new WhatsAppNotificador();
 
@@ -113,7 +116,9 @@ test('Whatsapp Notificador - Teste', ()=>{
 
     whats.notificarConclusao(tarefaWhatsApp);
 
-    expect(whatsSpy).toBe;
+    expect(whatsSpy).toHaveBeenCalledWith("Mensagem de Notificação: Whatsapp");
+
+    whatsSpy.mockRestore();
 
 })
 
