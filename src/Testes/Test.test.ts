@@ -19,7 +19,7 @@ class MockNotificador implements INotificador{
 }
 
 
-test('Deveria retornar o nome de Tarefa', ()=>{
+test('Deveria obter o status da Tarefa corretamente', ()=>{
 
     const tarefas = new Tarefa("Tarefa", "Concluida");
 
@@ -28,10 +28,12 @@ test('Deveria retornar o nome de Tarefa', ()=>{
     tarefas.exibir();
 
     expect(tarefas).toEqual({status: "Concluida", titulo: "Tarefa"});
+
+    tarefasSpy.mockRestore();
 })
 
 
-test('Deveria concluir a Tarefa com sucesso', ()=>{
+test('Deveria iniciar o processo de conclusão de Tarefa ', ()=>{
     const tarefa = new Tarefa("101", "Pendente");
     const mockNotificador = new MockNotificador();
 
@@ -43,7 +45,7 @@ test('Deveria concluir a Tarefa com sucesso', ()=>{
     expect(mockNotificador.ultimaTarefa).toEqual(tarefa);
 })
 
-test ('Deveria retornar o aviso de Email', ()=>{
+test ('Deveria notificar corretamente o envio de conclusão por email', ()=>{
     const tarefa = new Tarefa("Tarefa", "Status");
    
     const tarefaEmail = new EmailNotificador();
@@ -59,10 +61,10 @@ test ('Deveria retornar o aviso de Email', ()=>{
 })
 
 
-test('Deveria retornar o Relatório Simples', ()=>{
+test('Deveria começar a criação do Relatório Simples', ()=>{
 
     const tarefaRelatorio = new Tarefa("Relatorio", "Concluida");
-
+ 
     const relatorioSimples = new RelatorioSimples();
 
     const relatorioSpy = jest.spyOn(console,'log');
@@ -76,7 +78,7 @@ test('Deveria retornar o Relatório Simples', ()=>{
 })
 
 
-test ('Deveria retornar a Notificação', ()=>{
+test ('Deveria notificar a tarefa "Notificação" está concluída', ()=>{
 
     const tarefaNotificador = new Tarefa("Notificação", "Concluída");
 
@@ -92,7 +94,7 @@ test ('Deveria retornar a Notificação', ()=>{
 })
 
 
-test('Deveria retornar o Slack', ()=>{
+test('Deveria enviar a notificação de conclusão da tarefa pelo Slack', ()=>{
     const tarefaSlack = new Tarefa("Slack", "Concluida");
 
     const Slack = new SlackNotificador();
@@ -107,7 +109,7 @@ test('Deveria retornar o Slack', ()=>{
 
 })
 
-test('Deveria retornar a notificacao do Whatsapp', ()=>{
+test('Deveria enviar mensagem de notificação de conclusão para o Whatsapp', ()=>{
     const tarefaWhatsApp = new Tarefa("Whatsapp", "Concluida");
 
     const whats = new WhatsAppNotificador();
