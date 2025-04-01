@@ -27,13 +27,13 @@ test('Deveria obter o status da Tarefa corretamente', ()=>{
 
     tarefas.exibir();
 
-    expect(tarefas).toEqual({status: "Concluida", titulo: "Tarefa"});
+    expect(tarefasSpy).toHaveBeenCalledWith("Titulo: Tarefa , Status: Concluida");
 
     tarefasSpy.mockRestore();
 })
 
 
-test('Deveria iniciar o processo de conclusão de Tarefa ', ()=>{
+test('Deveria concluir a Tarefa ', ()=>{
     const tarefa = new Tarefa("101", "Pendente");
     const mockNotificador = new MockNotificador();
 

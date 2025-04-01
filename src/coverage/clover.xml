@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1743440705024" clover="3.2.0">
-  <project timestamp="1743440705024" name="All files">
+<coverage generated="1743515173235" clover="3.2.0">
+  <project timestamp="1743515173236" name="All files">
     <metrics statements="23" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10" elements="33" coveredelements="33" complexity="0" loc="23" ncloc="23" packages="1" files="7" classes="7"/>
     <file name="EmailNotificador.ts" path="/home/regina.leticia/Documentos/GitHub/exercicios-SOLID/src/EmailNotificador.ts">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
